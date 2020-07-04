@@ -1,3 +1,9 @@
+/*
+  Blink
+
+  Turns an LED on for one second, then off for one second, repeatedly.
+*/
+
 #include "pdk/device.h"
 #include "easy-pdk/calibrate.h"
 #include "delay.h"
@@ -15,7 +21,7 @@ inline void setup() {
 inline void loop() {
   PA &= ~(1 << LED_PIN);         // Turn LED on (i.e. write pin low)
   _delay_ms(1000);
-  PA |= (1 << LED_PIN);        // Turn LED off (i.e. write pin high)
+  PA |= (1 << LED_PIN);          // Turn LED off (i.e. write pin high)
   _delay_ms(1000);
 }
 
