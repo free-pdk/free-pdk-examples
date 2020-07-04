@@ -8,7 +8,7 @@
 #include "easy-pdk/calibrate.h"
 #include "delay.h"
 
-// LED is placed on PA,4 (current sink configuration)
+// LED is placed on PA4 (current sink configuration)
 #define LED_PIN         4
 
 // Main hardware initialization.
@@ -19,9 +19,9 @@ inline void setup() {
 
 // Main processing loop.
 inline void loop() {
-  PA &= ~(1 << LED_PIN);         // Turn LED on (i.e. write pin low)
+  PA &= ~(1 << LED_PIN);        // Turn LED on (i.e. write pin low)
   _delay_ms(1000);
-  PA |= (1 << LED_PIN);          // Turn LED off (i.e. write pin high)
+  PA |= (1 << LED_PIN);         // Turn LED off (i.e. write pin high)
   _delay_ms(1000);
 }
 
