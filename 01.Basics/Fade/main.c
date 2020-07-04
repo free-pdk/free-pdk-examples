@@ -1,7 +1,7 @@
 /*
   Fade
 
-  Fades an LED in and out.
+  Uses PWM to fades an LED in and out.
 */
 
 #include "pdk/device.h"

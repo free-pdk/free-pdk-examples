@@ -2,7 +2,7 @@
 Code Examples for Padauk MCUs 
 
 
-### Examples
-- **01. Basics**
+### Examples:
+- **01. Basics:**
   - [Blink](01.Basics/Blink) - Turns an LED on for one second, then off for one second, repeatedly.
-  - [Fade](01.Basics/Fade) - Fades an LED in and out.
+  - [Fade](01.Basics/Fade) - Uses PWM to fades an LED in and out.
