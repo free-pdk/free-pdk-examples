@@ -1,7 +1,7 @@
 /*
   Fade
 
-  Uses PWM to fades an LED in and out.
+  Uses PWM to fade an LED in and out.
 */
 
 #include "pdk/device.h"
@@ -11,8 +11,8 @@
 // LED is placed on PA4/PG1PWM (current sink configuration)
 #define LED_PIN         4
 
-int16_t brightness = 0;   // how bright the LED is
-int8_t fadeAmount = 5;    // how many point to fade the LED by
+int16_t brightness = 0;         // how bright the LED is
+int8_t fadeAmount = 5;          // how many points to fade the LED by
 
 // Main hardware initialization.
 inline void setup() {
@@ -28,13 +28,13 @@ inline void setup() {
   PWMGCUBH = 0xFF;
   PWMG1C = 0b00100110;          // Setup PWM (Inverse Polarity, PWMG1/PA4 output)
 #endif
-  PWMG1DTL = 0x00;              // Setup PWM duty value
+  PWMG1DTL = 0x00;              // Set the LED PWM duty value
   PWMG1DTH = 0x00;
 }
 
 // Main processing loop.
 inline void loop() {
-  PWMG1DTH = brightness;        // Setup LED PWM duty value
+  PWMG1DTH = brightness;        // Set LED PWM duty value
 
   brightness += fadeAmount;
   if (brightness + fadeAmount <= 0 || brightness > 255) {
