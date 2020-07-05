@@ -1,7 +1,7 @@
 /*
-  DigitalReadLED
+  ReadButton_WriteLED
 
-  Reads a digital input and turns on an LED when active.
+  Reads a Button (digital input) and turns on an LED when active.
 */
 
 #include <pdk/device.h>

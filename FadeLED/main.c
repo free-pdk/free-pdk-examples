@@ -1,5 +1,5 @@
 /*
-  Fade
+  FadeLED
 
   Uses PWM to fade an LED in and out, repeatedly.
 */
