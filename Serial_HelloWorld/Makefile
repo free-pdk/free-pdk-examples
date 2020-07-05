@@ -1,12 +1,12 @@
 
-F_CPU = 1000000
+F_CPU = 8000000
 TARGET_VDD_MV = 4000
 TARGET_VDD = 4.0
 
 # ---------------------------------------------------------------------
 
 DEVICE ?= PFS154
-OUTPUT_NAME ?= DigitalReadLED_$(DEVICE)
+OUTPUT_NAME ?= Serial_HelloWorld_$(DEVICE)
 
 ifeq ($(DEVICE), PMS152)
 	ARCH = pdk14
@@ -16,7 +16,7 @@ else ifeq ($(DEVICE), PFS173)
 	ARCH = pdk15
 endif
 
-ROOT_DIR = ../..
+ROOT_DIR = ..
 BUILD_DIR = .build
 OUTPUT_DIR = .output
 
@@ -32,7 +32,7 @@ OBJECTS = $(patsubst %.c,$(BUILD_DIR)/%.rel,$(SOURCES))
 COMPILE = sdcc -m$(ARCH) -c --std-sdcc11 --opt-code-size -D$(DEVICE) -DF_CPU=$(F_CPU) -DTARGET_VDD_MV=$(TARGET_VDD_MV) -I. -I$(ROOT_DIR)/include
 BUILD_LIB = sdar -rc
 LINK = sdcc -m$(ARCH)
-EASYPDKPROG = ../../../easy-pdk-programmer-software/easypdkprog
+EASYPDKPROG = ../../easy-pdk-programmer-software/easypdkprog
 
 # symbolic targets:
 all: size
