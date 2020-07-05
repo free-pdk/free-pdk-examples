@@ -1,12 +1,18 @@
 # free-pdk-examples
 Code Examples for Padauk MCUs using the free-pdk toolchain
 
-### Examples:
-- [BlinkLED](BlinkLED) - Turns an LED on for one second, then off for one second, repeatedly.
-- [FadeLED](FadeLED) - Uses PWM to fade an LED in and out, repeatedly.
-- [ReadButton_WriteLED](ReadButton_WriteLED) - Reads a Button (digital input) and turns on an LED when active.
-- [Serial_HelloWorld](Serial_HelloWorld) - Transmits "Hello World" @ ~115200 baud, and repeats once a second.
-- [ReadButton_WriteSerial](ReadButton_WriteSerial) - Reads a Button (digital input) and transmits the results over Serial @ ~115200 baud.
+### Code Examples:
+- [**BlinkLED**](BlinkLED) - Turns an LED on for one second, then off for one second, repeatedly.
+- **BlinkLED_WithoutDelay** - TODO...
+- [**FadeLED**](FadeLED) - Uses PWM to fade an LED in and out, repeatedly.
+- [**ReadButton_WriteLED**](ReadButton_WriteLED) - Reads a Button (digital input) and turns on an LED when active.
+- [**Serial_HelloWorld**](Serial_HelloWorld) - Transmits "Hello World" @ ~115200 baud, and repeats once a second.
+- [**ReadButton_WriteSerial**](ReadButton_WriteSerial) - Reads a Button (digital input) and transmits the results over Serial @ ~115200 baud.
+- **ReadAnalog_FadeLED** - TODO...
+- **ReadAnalog_WriteSerial** - TODO...
+- **ReadAnalog_WriteAverageSerial** - TODO...
+- **EchoSerial** - TODO...
+- **ReadSerial_FadeLED** - TODO...
 
 ### Toolchain:
 - SDCC Compiler: [SDCC](http://sdcc.sourceforge.net/) (3.9.0 or newer - 4.0.0+ preferred)
