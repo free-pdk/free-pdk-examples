@@ -3,7 +3,7 @@ Code Examples for Padauk MCUs using the free-pdk toolchain
 
 ### Code Examples:
 - [**BlinkLED**](BlinkLED) - Turns an LED on for one second, then off for one second, repeatedly.  Uses a timing loop for delays.
-- **BlinkLED_WithIRQ** (TODO...) - Turns an LED on for one second, then off for one second, repeatedly.  Uses a timer interrupt for delays.
+- [**BlinkLED_WithIRQ**](BlinkLED_WithIRQ) - Turns an LED on for one second, then off for one second, repeatedly.  Uses a timer interrupt for delays.
 - [**FadeLED**](FadeLED) - Uses PWM to fade an LED in and out, repeatedly.
 - [**ReadButton_WriteLED**](ReadButton_WriteLED) - Reads a Button (digital input), and turns on an LED when active.
 - [**Serial_HelloWorld**](Serial_HelloWorld) - Transmits "Hello World" over Serial @ ~115200 baud, and repeats once a second.
