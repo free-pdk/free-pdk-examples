@@ -19,22 +19,23 @@ inline void setup() {
   PAC |= (1 << LED_PIN);        // Set LED_PIN as output (all pins are input by default)
 
 #if defined(PWMG1CUBL)
-  PWMG1C = 0b10100111;          // Setup PWM (Enable PWMG1, Inverse Polarity, PA4 output, IHRC source)
+  PWMG1C = PWMG1C_ENABLE | PWMG1C_INVERT_OUT | PWMG1C_OUT_PA4 | PWMG1C_CLK_IHRC;
   PWMG1CUBL = 0xFF;             // Setup PWM upper bound
   PWMG1CUBH = 0x00;
 #else
-  PWMGCLK = 0b10000001;         // Setup PWM (Enable PWM, IHRC source)
+  PWMGCLK = PWMGCLK_PWMG_ENABLE | PWMGCLK_CLK_IHRC;
   PWMGCUBL = 0x00;              // Setup PWM upper bound
   PWMGCUBH = 0xFF;
-  PWMG1C = 0b00100110;          // Setup PWM (Inverse Polarity, PWMG1/PA4 output)
+  PWMG1C = PWMG1C_INVERT_OUT | PWMG1C_OUT_PWMG1 | PWMG1C_OUT_PA4;
 #endif
-  PWMG1DTL = 0x00;              // Set the LED PWM duty value
+
+  PWMG1DTL = 0x00;              // Clear the LED PWM duty value
   PWMG1DTH = 0x00;
 }
 
 // Main processing loop.
 inline void loop() {
-  PWMG1DTH = brightness;        // Set LED PWM duty value
+  PWMG1DTH = brightness;        // Set the LED PWM duty value
 
   brightness += fadeAmount;
   if (brightness + fadeAmount <= 0 || brightness > 255) {
