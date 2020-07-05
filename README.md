@@ -6,6 +6,7 @@ Code Examples for Padauk MCUs using the free-pdk toolchain
 - [FadeLED](FadeLED) - Uses PWM to fade an LED in and out, repeatedly.
 - [ReadButton_WriteLED](ReadButton_WriteLED) - Reads a Button (digital input) and turns on an LED when active.
 - [Serial_HelloWorld](Serial_HelloWorld) - Transmits "Hello World" @ ~115200 baud, and repeats once a second.
+- [ReadButton_WriteSerial](ReadButton_WriteSerial) - Reads a Button (digital input) and transmits the results over Serial @ ~115200 baud.
 
 ### Toolchain:
 - SDCC Compiler: [SDCC](http://sdcc.sourceforge.net/) (3.9.0 or newer - 4.0.0+ preferred)
