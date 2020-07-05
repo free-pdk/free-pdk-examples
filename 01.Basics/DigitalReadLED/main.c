@@ -5,7 +5,6 @@
 */
 
 #include <pdk/device.h>
-#include <easy-pdk/calibrate.h>
 #include "sysclock.h"
 #include "delay.h"
 

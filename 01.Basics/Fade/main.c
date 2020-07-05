@@ -6,15 +6,14 @@
 
 #include <stdint.h>
 #include <pdk/device.h>
-#include <easy-pdk/calibrate.h>
 #include "sysclock.h"
 #include "delay.h"
 
 // LED is placed on PA4/PG1PWM (current sink configuration)
 #define LED_PIN             4
 
-int16_t brightness = 0;         // how bright the LED is
-int8_t fadeAmount = 5;          // how many points to fade the LED by
+int16_t brightness = 0;         // How bright the LED is
+int8_t fadeAmount = 5;          // How many points to fade the LED by
 
 // Main hardware initialization.
 inline void setup() {

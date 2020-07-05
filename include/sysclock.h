@@ -1,6 +1,8 @@
 #ifndef __SYSCLOCK_H__
 #define __SYSCLOCK_H__
 
+#include <easy-pdk/calibrate.h>
+
 #if !defined(F_CPU)
   #error "F_CPU not defined"
 #endif
