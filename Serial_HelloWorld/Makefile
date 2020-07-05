@@ -32,7 +32,7 @@ OBJECTS = $(patsubst %.c,$(BUILD_DIR)/%.rel,$(SOURCES))
 COMPILE = sdcc -m$(ARCH) -c --std-sdcc11 --opt-code-size -D$(DEVICE) -DF_CPU=$(F_CPU) -DTARGET_VDD_MV=$(TARGET_VDD_MV) -I. -I$(ROOT_DIR)/include
 BUILD_LIB = sdar -rc
 LINK = sdcc -m$(ARCH)
-EASYPDKPROG = ../../easy-pdk-programmer-software/easypdkprog
+EASYPDKPROG = easypdkprog
 
 # symbolic targets:
 all: size
