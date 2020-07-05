@@ -3,8 +3,8 @@
 
 #include <stdint.h>
 
-volatile uint8_t ticks;
-volatile uint32_t millis;                       // Number of elapsed milliseconds
+volatile uint8_t _ticks;
+volatile uint32_t _millis;                       // Number of elapsed milliseconds
 
 void millis_setup() {
   // Setup timer16 (T16) interrupt to tick every 32 uS
@@ -13,10 +13,17 @@ void millis_setup() {
   INTEN |= INTEN_T16;
 }
 
+uint32_t millis() {
+  __disgint();
+  uint32_t currentMillis = _millis;
+  __engint();
+  return currentMillis;
+}
+
 void millis_irq_handler() {
-  if (ticks++ == 31) { // Should really be 31.25, but close enough?
-    ticks = 0;
-    millis++;
+  if (_ticks++ == 31) { // Should really be 31.25, but close enough?
+    _ticks = 0;
+    _millis++;
   }
 }
 

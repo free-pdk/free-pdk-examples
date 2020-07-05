@@ -41,7 +41,8 @@ inline void setup() {
 
 // Main processing loop.
 inline void loop() {
-  if (millis - previousMillis >= 1000) {
+  uint32_t currentMillis = millis();
+  if (currentMillis - previousMillis >= 1000) {
     toggleLed();
     previousMillis += 1000;
   }
