@@ -21,6 +21,8 @@ void interrupt(void) __interrupt(0) {
 // Main hardware initialization.
 inline void setup() {
   serial_setup();               // Initialize Serial engine
+
+  INTRQ = 0;
   __engint();                   // Enable global interrupts
 }
 

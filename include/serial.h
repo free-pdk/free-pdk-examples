@@ -17,7 +17,7 @@ void serial_setup() {
 
   PAC |= (1 << SERIAL_TX_PIN);                  // Enable TX Pin as output
   txdata = 0xD55F;                              // Setup 2 stop bits, 0x55 char for autobaud, 1 start bit, 5 stop bits
-  INTEN = INTEN_TM2;                            // Enable TM2 interrupt, send out initial stop bits and autobaud char
+  INTEN |= INTEN_TM2;                           // Enable TM2 interrupt, send out initial stop bits and autobaud char
 }
 
 void serial_irq_handler() {

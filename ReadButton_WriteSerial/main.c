@@ -32,6 +32,8 @@ inline void setup() {
   PAPH |= (1 << BTN_PIN);       // Enable pull-up resistor on BTN_PIN
 
   serial_setup();               // Initialize Serial engine
+
+  INTRQ = 0;
   __engint();                   // Enable global interrupts
 }
 
