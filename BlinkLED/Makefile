@@ -16,7 +16,7 @@ else ifeq ($(DEVICE), PFS173)
 	ARCH = pdk15
 endif
 
-ROOT_DIR = ../..
+ROOT_DIR = ..
 BUILD_DIR = .build
 OUTPUT_DIR = .output
 

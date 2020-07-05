@@ -2,10 +2,9 @@
 Code Examples for Padauk MCUs using the free-pdk toolchain
 
 ### Examples:
-- **01. Basics:**
-  - [Blink](01.Basics/Blink) - Turns an LED on for one second, then off for one second, repeatedly.
-  - [Fade](01.Basics/Fade) - Uses PWM to fade an LED in and out, repeatedly.
-  - [DigitalReadLED](01.Basics/DigitalReadLED) - Reads a digital input and turns on an LED when active.
+- [BlinkLED](BlinkLED) - Turns an LED on for one second, then off for one second, repeatedly.
+- [FadeLED](FadeLED) - Uses PWM to fade an LED in and out, repeatedly.
+- [ReadButton_WriteLED](ReadButton_WriteLED) - Reads a Button (digital input) and turns on an LED when active.
 
 ### Toolchain:
 - SDCC Compiler: [SDCC](http://sdcc.sourceforge.net/) (3.9.0 or newer - 4.0.0+ preferred)

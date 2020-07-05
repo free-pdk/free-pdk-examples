@@ -23,7 +23,7 @@
 inline void setup() {
   //PAC &= ~(1 << BTN_PIN);       // Set BTN_PIN as input (all pins are input by default)
   PADIER |= (1 << BTN_PIN);     // Enable BTN_PIN as digital input
-  PAPH |= (1 << BTN_PIN);       // Enable pull-up resistors on BTN_PIN
+  PAPH |= (1 << BTN_PIN);       // Enable pull-up resistor on BTN_PIN
 
   PAC |= (1 << LED_PIN);        // Set LED_PIN as output (all pins are input by default)
   turnLedOff();
