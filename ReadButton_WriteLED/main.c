@@ -51,6 +51,9 @@ void main() {
 
 // Startup code - Setup/calibrate system clock.
 unsigned char _sdcc_external_startup(void) {
+  // Modify F_CPU in the Makefile to change frequencies
+  // ...or... Replace these with the more specific PDK_SET_SYSCLOCK(...) / EASY_PDK_CALIBRATE_IHRC(...) macros.
+  // See pdk/sysclock.h for details.
   FREE_PDK_INIT_SYSCLOCK();
   FREE_PDK_CALIBRATE_SYSCLOCK(TARGET_VDD_MV);
   return 0;
