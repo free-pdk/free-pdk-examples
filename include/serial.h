@@ -13,7 +13,7 @@ void serial_setup() {
   // Setup timer2 (TM2) interrupt for 115200 baud
   TM2C = TM2C_CLK_IHRC;                         // Use IHRC -> 16 Mhz
   TM2S = TM2S_PRESCALE_NONE | TM2S_SCALE_DIV2;  // No prescale, scale 2 ~> 8MHz
-  TM2B = 68;                                    // Divide by (68+1) ~> 115942 Hz (apx. 115200)
+  TM2B = 69;                                    // Divide by 69 ~> 115942 Hz (apx. 115200)
 
   PAC |= (1 << SERIAL_TX_PIN);                  // Enable TX Pin as output
   txdata = 0xD55F;                              // Setup 2 stop bits, 0x55 char for autobaud, 1 start bit, 5 stop bits
