@@ -15,25 +15,18 @@
 #define turnLedOn()         PA &= ~(1 << LED_PIN)
 #define turnLedOff()        PA |= (1 << LED_PIN)
 
-// Main hardware initialization.
-inline void setup() {
-  PAC |= (1 << LED_PIN);        // Set LED_PIN as output (all pins are input by default)
-  turnLedOff();
-}
-
-// Main processing loop.
-inline void loop() {
-  turnLedOn();
-  _delay_ms(1000);
-  turnLedOff();
-  _delay_ms(1000);
-}
-
 // Main program.
 void main() {
-  setup();
+  // Initialize hardware
+  PAC |= (1 << LED_PIN);          // Set LED_PIN as output (all pins are input by default)
+  turnLedOff();
+
+  // Main processing loop.
   while(1) {
-    loop();
+    turnLedOn();
+    _delay_ms(1000);
+    turnLedOff();
+    _delay_ms(1000);
   }
 }
 

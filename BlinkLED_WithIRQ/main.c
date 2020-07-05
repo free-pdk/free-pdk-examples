@@ -22,37 +22,30 @@
 uint32_t previousMillis;
 
 void interrupt(void) __interrupt(0) {
-  if (INTRQ & INTRQ_T16) {      // T16 interrupt request?
-    INTRQ &= ~INTRQ_T16;        // Mark T16 interrupt request processed
+  if (INTRQ & INTRQ_T16) {        // T16 interrupt request?
+    INTRQ &= ~INTRQ_T16;          // Mark T16 interrupt request processed
     millis_irq_handler();
-  }
-}
-
-// Main hardware initialization.
-inline void setup() {
-  PAC |= (1 << LED_PIN);        // Set LED_PIN as output (all pins are input by default)
-  turnLedOff();
-
-  millis_setup();
-
-  INTRQ = 0;
-  __engint();                   // Enable global interrupts
-}
-
-// Main processing loop.
-inline void loop() {
-  uint32_t currentMillis = millis();
-  if (currentMillis - previousMillis >= 1000) {
-    toggleLed();
-    previousMillis += 1000;
   }
 }
 
 // Main program.
 void main() {
-  setup();
+  // Initialize hardware
+  PAC |= (1 << LED_PIN);          // Set LED_PIN as output (all pins are input by default)
+  turnLedOff();
+
+  millis_setup();
+
+  INTRQ = 0;
+  __engint();                     // Enable global interrupts
+
+  // Main processing loop.
   while(1) {
-    loop();
+    uint32_t currentMillis = millis();
+    if (currentMillis - previousMillis >= 1000) {
+      toggleLed();
+      previousMillis += 1000;
+    }
   }
 }
 

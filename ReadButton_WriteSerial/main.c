@@ -25,40 +25,30 @@ void interrupt(void) __interrupt(0) {
   }
 }
 
-// Main hardware initialization.
-inline void setup() {
-  //PAC &= ~(1 << BTN_PIN);       // Set BTN_PIN as input (all pins are input by default)
-  PADIER |= (1 << BTN_PIN);     // Enable BTN_PIN as digital input
-  PAPH |= (1 << BTN_PIN);       // Enable pull-up resistor on BTN_PIN
-
-  serial_setup();               // Initialize Serial engine
-
-  INTRQ = 0;
-  __engint();                   // Enable global interrupts
-}
-
-// Main processing loop.
-inline void loop() {
-  uint8_t buttonState = isButtonActive();
-
-  if (buttonState != previousButtonState) {
-    if (buttonState) {
-      serial_println("Button Down");
-    } else {
-      serial_println("Button Up");
-    }
-
-    previousButtonState = buttonState;
-  }
-
-  _delay_ms(1);                 // Short delay (i.e. debounce button)
-}
-
 // Main program.
 void main() {
-  setup();
+  // Initialize hardware
+  //PAC &= ~(1 << BTN_PIN);         // Set BTN_PIN as input (all pins are input by default)
+  PADIER |= (1 << BTN_PIN);       // Enable BTN_PIN as digital input
+  PAPH |= (1 << BTN_PIN);         // Enable pull-up resistor on BTN_PIN
+
+  serial_setup();                 // Initialize Serial engine
+
+  INTRQ = 0;
+  __engint();                     // Enable global interrupts
+
+  // Main processing loop.
   while(1) {
-    loop();
+    uint8_t buttonState = isButtonActive();
+      if (buttonState != previousButtonState) {
+      if (buttonState) {
+        serial_println("Button Down");
+      } else {
+        serial_println("Button Up");
+      }
+      previousButtonState = buttonState;
+    }
+    _delay_ms(1);                 // Short delay (i.e. debounce button)
   }
 }
 

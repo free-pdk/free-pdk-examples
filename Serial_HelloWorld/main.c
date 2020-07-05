@@ -12,31 +12,24 @@
 // Note: serial.h assumes TX is on PA7, and uses timer2 (TM2) interrupts for timing.
 
 void interrupt(void) __interrupt(0) {
-  if (INTRQ & INTRQ_TM2) {      // TM2 interrupt request?
-    INTRQ &= ~INTRQ_TM2;        // Mark TM2 interrupt request processed
-    serial_irq_handler();       // Process next Serial Bit
+  if (INTRQ & INTRQ_TM2) {        // TM2 interrupt request?
+    INTRQ &= ~INTRQ_TM2;          // Mark TM2 interrupt request processed
+    serial_irq_handler();         // Process next Serial Bit
   }
-}
-
-// Main hardware initialization.
-inline void setup() {
-  serial_setup();               // Initialize Serial engine
-
-  INTRQ = 0;
-  __engint();                   // Enable global interrupts
-}
-
-// Main processing loop.
-inline void loop() {
-  serial_println("Hello World!");
-  _delay_ms(1000);
 }
 
 // Main program.
 void main() {
-  setup();
+  // Initialize hardware
+  serial_setup();                 // Initialize Serial engine
+
+  INTRQ = 0;
+  __engint();                     // Enable global interrupts
+
+  // Main processing loop.
   while(1) {
-    loop();
+    serial_println("Hello World!");
+    _delay_ms(1000);
   }
 }
 
