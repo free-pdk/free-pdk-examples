@@ -14,9 +14,9 @@ void millis_setup() {
 }
 
 uint32_t millis() {
-  __disgint();
+  INTEN &= ~INTEN_T16;                          // Disable T16 (read of 32 bit value _millis is non-atomic)
   uint32_t currentMillis = _millis;
-  __engint();
+  INTEN |= INTEN_T16;                           // Re-enable T16
   return currentMillis;
 }
 
