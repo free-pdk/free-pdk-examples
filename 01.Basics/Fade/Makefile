@@ -6,7 +6,7 @@ TARGET_VDD = 4.0
 # ---------------------------------------------------------------------
 
 DEVICE ?= PFS154
-OUTPUT_NAME ?= fade_$(DEVICE)
+OUTPUT_NAME ?= Fade_$(DEVICE)
 
 ifeq ($(DEVICE), PMS152)
 	ARCH = pdk14

@@ -10,19 +10,22 @@
 #include "delay.h"
 
 // LED is placed on PA4 (current sink configuration)
-#define LED_PIN         4
+#define LED_PIN             4
+
+#define turnLedOn()         PA &= ~(1 << LED_PIN)
+#define turnLedOff()        PA |= (1 << LED_PIN)
 
 // Main hardware initialization.
 inline void setup() {
   PAC |= (1 << LED_PIN);        // Set LED_PIN as output (all pins are input by default)
-  PA |= (1 << LED_PIN);         // Turn LED off (i.e. write pin high)
+  turnLedOff();
 }
 
 // Main processing loop.
 inline void loop() {
-  PA &= ~(1 << LED_PIN);        // Turn LED on (i.e. write pin low)
+  turnLedOn();
   _delay_ms(1000);
-  PA |= (1 << LED_PIN);         // Turn LED off (i.e. write pin high)
+  turnLedOff();
   _delay_ms(1000);
 }
 
