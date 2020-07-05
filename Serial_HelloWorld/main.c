@@ -1,7 +1,7 @@
 /*
   Serial_HelloWorld
 
-  Transmits "Hello World" @ ~115200 baud, and repeats once a second.
+  Transmits "Hello World" over Serial @ ~115200 baud, and repeats once a second.
 */
 
 #include <pdk/device.h>

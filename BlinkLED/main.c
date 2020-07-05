@@ -2,6 +2,7 @@
   BlinkLED
 
   Turns an LED on for one second, then off for one second, repeatedly.
+  Uses a timing loop for delays.
 */
 
 #include <pdk/device.h>

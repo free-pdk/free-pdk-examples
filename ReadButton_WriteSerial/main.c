@@ -1,7 +1,7 @@
 /*
   ReadButton_WriteSerial
 
-  Reads a Button (digital input) and transmits the results over Serial @ ~115200 baud.
+  Reads a Button (digital input), and transmits the results over Serial @ ~115200 baud.
 */
 
 #include <pdk/device.h>
