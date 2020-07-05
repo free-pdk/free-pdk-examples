@@ -4,8 +4,9 @@
   Uses PWM to fade an LED in and out, repeatedly.
 */
 
-#include "pdk/device.h"
-#include "easy-pdk/calibrate.h"
+#include <pdk/device.h>
+#include <easy-pdk/calibrate.h>
+#include "sysclock.h"
 #include "delay.h"
 
 // LED is placed on PA4/PG1PWM (current sink configuration)
@@ -19,14 +20,14 @@ inline void setup() {
   PAC |= (1 << LED_PIN);        // Set LED_PIN as output (all pins are input by default)
 
 #if defined(PWMG1CUBL)
-  PWMG1C = PWMG1C_ENABLE | PWMG1C_INVERT_OUT | PWMG1C_OUT_PA4 | PWMG1C_CLK_IHRC;
+  PWMG1C = (uint8_t)(PWMG1C_ENABLE | PWMG1C_INVERT_OUT | PWMG1C_OUT_PA4 | PWMG1C_CLK_IHRC);
   PWMG1CUBL = 0xFF;             // Setup PWM upper bound
   PWMG1CUBH = 0x00;
 #else
-  PWMGCLK = PWMGCLK_PWMG_ENABLE | PWMGCLK_CLK_IHRC;
+  PWMGCLK = (uint8_t)(PWMGCLK_PWMG_ENABLE | PWMGCLK_CLK_IHRC);
   PWMGCUBL = 0x00;              // Setup PWM upper bound
   PWMGCUBH = 0xFF;
-  PWMG1C = PWMG1C_INVERT_OUT | PWMG1C_OUT_PWMG1 | PWMG1C_OUT_PA4;
+  PWMG1C = (uint8_t)(PWMG1C_INVERT_OUT | PWMG1C_OUT_PWMG1 | PWMG1C_OUT_PA4);
 #endif
 
   PWMG1DTL = 0x00;              // Clear the LED PWM duty value
@@ -56,22 +57,7 @@ void main() {
 
 // Startup code - Setup/calibrate system clock.
 unsigned char _sdcc_external_startup(void) {
-
-#if (F_CPU == 8000000)
-  PDK_USE_8MHZ_IHRC_SYSCLOCK();
-  EASY_PDK_CALIBRATE_IHRC(F_CPU, TARGET_VDD_MV);
-#elif (F_CPU == 4000000)
-  PDK_USE_4MHZ_IHRC_SYSCLOCK();
-  EASY_PDK_CALIBRATE_IHRC(F_CPU, TARGET_VDD_MV);
-#elif (F_CPU == 2000000)
-  PDK_USE_2MHZ_IHRC_SYSCLOCK();
-  EASY_PDK_CALIBRATE_IHRC(F_CPU, TARGET_VDD_MV);
-#elif (F_CPU == 1000000)
-  PDK_USE_1MHZ_IHRC_SYSCLOCK();
-  EASY_PDK_CALIBRATE_IHRC(F_CPU, TARGET_VDD_MV);
-#else
-  #error "Unknown F_CPU"
-#endif
-
+  FREE_PDK_INIT_SYSCLOCK();
+  FREE_PDK_CALIBRATE_SYSCLOCK(TARGET_VDD_MV);
   return 0;
 }

@@ -4,8 +4,9 @@
   Turns an LED on for one second, then off for one second, repeatedly.
 */
 
-#include "pdk/device.h"
-#include "easy-pdk/calibrate.h"
+#include <pdk/device.h>
+#include <easy-pdk/calibrate.h>
+#include "sysclock.h"
 #include "delay.h"
 
 // LED is placed on PA4 (current sink configuration)
@@ -35,22 +36,7 @@ void main() {
 
 // Startup code - Setup/calibrate system clock.
 unsigned char _sdcc_external_startup(void) {
-
-#if (F_CPU == 8000000)
-  PDK_USE_8MHZ_IHRC_SYSCLOCK();
-  EASY_PDK_CALIBRATE_IHRC(F_CPU, TARGET_VDD_MV);
-#elif (F_CPU == 4000000)
-  PDK_USE_4MHZ_IHRC_SYSCLOCK();
-  EASY_PDK_CALIBRATE_IHRC(F_CPU, TARGET_VDD_MV);
-#elif (F_CPU == 2000000)
-  PDK_USE_2MHZ_IHRC_SYSCLOCK();
-  EASY_PDK_CALIBRATE_IHRC(F_CPU, TARGET_VDD_MV);
-#elif (F_CPU == 1000000)
-  PDK_USE_1MHZ_IHRC_SYSCLOCK();
-  EASY_PDK_CALIBRATE_IHRC(F_CPU, TARGET_VDD_MV);
-#else
-  #error "Unknown F_CPU"
-#endif
-
+  FREE_PDK_INIT_SYSCLOCK();
+  FREE_PDK_CALIBRATE_SYSCLOCK(TARGET_VDD_MV);
   return 0;
 }
