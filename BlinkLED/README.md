@@ -1,4 +1,4 @@
-# Blink Example
+# BlinkLED Example
 
 This example shows just about the simplest thing you can do: it blinks an LED, on for one second, then off for one second, repeatedly.
 
