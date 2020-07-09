@@ -25,9 +25,6 @@
   #define LED_PIN             4   // LED is placed on Port A, Pin 4, which is also PG1PWM
 #endif
 
-int16_t brightness = 0;           // How bright the LED is
-int8_t fadeAmount = 5;            // How many points to fade the LED by
-
 // Main program
 void main() {
 
@@ -56,20 +53,27 @@ void main() {
 
   // Main processing loop
   while (1) {
-#if defined(PWM_8)
-    TM2B = brightness;            // Set the LED PWM duty value
-#else
-    PWMG1DTH = brightness;        // Set the LED PWM duty value
-#endif
+    uint8_t fadeValue;
 
-    // Adjust the brightness
-    brightness += fadeAmount;
-    if (brightness + fadeAmount <= 0 || brightness > 255) {
-      fadeAmount = -fadeAmount;
-      brightness += fadeAmount;
+    // Fade in from min to max in increments of 5
+    for (fadeValue = 0; fadeValue < 255; fadeValue += 5) {
+      #if defined(PWM_8)
+        TM2B = fadeValue;         // Set the LED PWM duty value
+      #else
+        PWMG1DTH = fadeValue;     // Set the LED PWM duty value
+      #endif
+      _delay_ms(30);              // wait for 30 milliseconds to see the dimming effect
     }
 
-    _delay_ms(30);
+    // Fade out from max to min in increments of 5
+    for (fadeValue = 255; fadeValue > 0; fadeValue -= 5) {
+      #if defined(PWM_8)
+        TM2B = fadeValue;         // Set the LED PWM duty value
+      #else
+        PWMG1DTH = fadeValue;     // Set the LED PWM duty value
+      #endif
+      _delay_ms(30);              // wait for 30 milliseconds to see the dimming effect
+    }
   }
 }
 
