@@ -5,13 +5,13 @@
 */
 
 #include <pdk/device.h>
-#include "sysclock.h"
+#include "auto_sysclock.h"
 #include "serial.h"
 #include "delay.h"
 
-// Note: serial.h assumes TX is on PA7, and uses timer2 (TM2) interrupts for timing.
+// Note: serial.h assumes TX is on Port A, Pin 7, and uses timer2 (TM2) interrupts for timing.
 
-// BTN is placed on PA5 (active low configuration)
+// BTN is placed on Port A, Pin 5 (active low configuration)
 #define BTN_PIN             5
 
 #define isButtonActive()    !(PA & (1 << BTN_PIN))
@@ -38,7 +38,7 @@ void main() {
   __engint();                     // Enable global interrupts
 
   // Main processing loop.
-  while(1) {
+  while (1) {
     uint8_t buttonState = isButtonActive();
       if (buttonState != previousButtonState) {
       if (buttonState) {
@@ -54,10 +54,16 @@ void main() {
 
 // Startup code - Setup/calibrate system clock.
 unsigned char _sdcc_external_startup(void) {
-  // Modify F_CPU in the Makefile to change frequencies
-  // ...or... Replace these with the more specific PDK_SET_SYSCLOCK(...) / EASY_PDK_CALIBRATE_IHRC(...) macros.
-  // See pdk/sysclock.h for details.
-  FREE_PDK_INIT_SYSCLOCK();
-  FREE_PDK_CALIBRATE_SYSCLOCK(TARGET_VDD_MV);
-  return 0;
+
+  // Initialize the system clock (CLKMD register) with the IHRC, ILRC, or EOSC clock source and correct divider.
+  // The AUTO_INIT_SYSCLOCK() macro uses F_CPU (defined in the Makefile) to choose the IHRC or ILRC clock source and divider.
+  // Alternatively, replace this with the more specific PDK_SET_SYSCLOCK(...) macro from pdk/sysclock.h
+  AUTO_INIT_SYSCLOCK();
+
+  // Insert placeholder code to tell EasyPdkProg to calibrate the IHRC or ILRC internal oscillator.
+  // The AUTO_CALIBRATE_SYSCLOCK(...) macro uses F_CPU (defined in the Makefile) to choose the IHRC or ILRC oscillator.
+  // Alternatively, replace this with the more specific EASY_PDK_CALIBRATE_IHRC(...) or EASY_PDK_CALIBRATE_ILRC(...) macro from easy-pdk/calibrate.h
+  AUTO_CALIBRATE_SYSCLOCK(TARGET_VDD_MV);
+
+  return 0;   // Return 0 to inform SDCC to continue with normal initialization.
 }
