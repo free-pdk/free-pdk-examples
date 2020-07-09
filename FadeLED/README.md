@@ -5,9 +5,9 @@ This example shows how to fade an LED in and out using Pulse-Width-Modulation (P
 _**Inspiration**: This example was inspired by the public domain [Fading](https://www.arduino.cc/en/Tutorial/Fading) example from Arduino._
 
 ### Hardware Circuit
-For devices with an 11-bit PWM (specifically PWMG1 - PFS154,PFS173,PMS152,PMS154C), the LED is placed on Port A, Pin 4, which is also one of the PG1PWM pins.
+For devices with an 11-bit PWM (specifically PWMG1 - i.e. PFS154/PFS173/PMS152/PMS154C), the LED is placed on Port A, Pin 4, which is also one of the PG1PWM pins.
 
-For other devices (PFS172,PMS15A,PMS150C,PMC171B), the 8-bit PWM output of timer 2 (TM2) is used, and the LED is placed on Port A, Pin 3, which is also the TM2PWM pin.
+For other devices (i.e. PFS172/PMS15A/PMS150C/PMC171B), the 8-bit PWM output of timer 2 (TM2) is used, and the LED is placed on Port A, Pin 3, which is also the TM2PWM pin.
  
 In either case the LED is installed in a current sink configuration.
 
