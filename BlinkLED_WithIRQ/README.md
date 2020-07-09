@@ -37,7 +37,7 @@ make run
 Note: These commands can be chained as well.  i.e. `make clean program run`
 
 ### Customization:
-Edit the variables at top of the Makefile to:
+Edit the variables at the top of the Makefile to:
 - **DEVICE**: Pick a different Padauk MCU (defaults to PFS154 if not changed)
 - **F_CPU**: Use a different frequency for the system clock
   - Note: The _sdcc_external_startup() method will automatically choose the correct internal oscillator (IHRC or ILRC) and divider based on the desired frequency.
@@ -53,3 +53,4 @@ A device specific include file (pdk/device/*.h) may need to be supplied for less
 ### Build Stats
 - Code Size: 171 words (342 bytes)
 - RAM usage: 21 bytes + stack
+  - Most of the 21 bytes are used by the `millis()` routines defined in the [millis.h](../include/millis.h) include file.
