@@ -10,7 +10,7 @@
 #include "auto_sysclock.h"
 #include "millis.h"
 
-// Note: millis.h uses timer16 (T16) interrupts for timing.
+// Note: millis.h uses timer16 (T16) interrupts for timekeeping.
 
 // LED is placed on Port A, Pin 4 (current sink configuration)
 #define LED_PIN             4
@@ -20,7 +20,10 @@
 #define turnLedOff()        PA |= (1 << LED_PIN)
 #define toggleLed()         PA ^= (1 << LED_PIN)
 
-uint32_t previousMillis;
+// Interval at which to blink the LED (milliseconds)
+#define BLINK_INTERVAL      1000
+
+uint32_t previousMillis;          // The last time the LED was updated
 
 void interrupt(void) __interrupt(0) {
   if (INTRQ & INTRQ_T16) {        // T16 interrupt request?
@@ -44,9 +47,9 @@ void main() {
   // Main processing loop
   while (1) {
     uint32_t currentMillis = millis();
-    if (currentMillis - previousMillis >= 1000) {
+    if (currentMillis - previousMillis >= BLINK_INTERVAL) {
       toggleLed();
-      previousMillis += 1000;
+      previousMillis += BLINK_INTERVAL;
     }
   }
 }
