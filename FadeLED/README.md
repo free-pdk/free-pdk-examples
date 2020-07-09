@@ -5,7 +5,7 @@ This example shows how to fade an LED in and out using Pulse-Width-Modulation (P
 _**Inspiration**: This example was inspired by the public domain [Fading](https://www.arduino.cc/en/Tutorial/Fading) example from Arduino._
 
 ### Hardware Circuit
-For devices with an 11-bit PWM (specifically PWMG1 - i.e. PFS154/PFS173/PMS152/PMS154C), the LED is placed on Port A, Pin 4, which is also one of the PG1PWM pins.
+For devices with an 11-bit PWM (specifically PWMG1) (i.e. PFS154/PFS173/PMS152/PMS154C), the LED is placed on Port A, Pin 4, which is also one of the PG1PWM pins.
 
 For other devices (i.e. PFS172/PMS15A/PMS150C/PMC171B), the 8-bit PWM output of timer 2 (TM2) is used, and the LED is placed on Port A, Pin 3, which is also the TM2PWM pin.
  
@@ -15,11 +15,12 @@ This means the negative leg (or cathode) of the LED is connected to the digital 
 - When the digital pin is LOW, current will flow through the LED and it will light up.
 - When the digital pin is HIGH, no current will flow and the LED will turn off.
 
-This also means we have to invert the PWM output or else the brightness level will be reversed.
+This also means we have to invert the PWM output or else the brightness levels will be reversed.
 
 ### Internal Peripherals Used:
 - **11-bit PWM (PWMG1)**
-- ... _or_ ...
+
+... _or_ ...
 - **8-bit timer 2 PWM (TM2)**  
 
 ### Toolchain:
