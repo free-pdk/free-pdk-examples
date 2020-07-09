@@ -5,15 +5,14 @@ This example shows just about the simplest thing you can do: it blinks an LED, o
 Note: This example uses a timing loop to delay for one second.
 See the [BlinkLED_WithIRQ](../BlinkLED_WithIRQ) example for a timer based approach. 
 
+_**Inspiration**: This example was inspired by the public domain [Blink](https://www.arduino.cc/en/Tutorial/Blink) example from Arduino._
+
 ### Hardware Circuit
 By default, the LED is placed on Port A, Pin 4 in a current sink configuration.
 
 This means the negative leg (or cathode) of the LED is connected to the digital pin of the IC, and the positive leg (or anode) of the LED is connected through a current limiting resistor to VDD.
 - When the digital pin is LOW, current will flow through the LED and it will light up.
 - When the digital pin is HIGH, no current will flow and the LED will turn off.
-
-##### Inspiration:
-This example was inspired by the public domain [Blink](https://www.arduino.cc/en/Tutorial/Blink) example from Arduino.
 
 ### Toolchain:
 - Compiler: Requires [SDCC 3.9.0](http://sdcc.sourceforge.net/) (or newer, 4.0.0+ is recommended)
