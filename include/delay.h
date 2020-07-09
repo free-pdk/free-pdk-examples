@@ -2,7 +2,7 @@
 #define __DELAY_H__
 
 #if !defined(F_CPU)
-  #error "F_CPU not defined"
+  #error "F_CPU is not defined!"
 #endif
 
 #include <stdint.h>
@@ -26,15 +26,17 @@
 #define _delay_ms_small(ms)     _delay_loop_16(LOOP_CTR_16(MS_TO_CYCLES(ms)))
 #define _delay_ms(ms)           _delay_loop_32(LOOP_CTR_32(MS_TO_CYCLES(ms)))
 
-//// 4 cycles per loop, 2 cycles overhead
-//#define _delay_loop_8(loop_ctr) \
-//  __asm__( \
-//  "  mov a, #("#loop_ctr")  \n" \
-//  "0$:                      \n" \
-//  "  sub a, #0x01           \n" \
-//  "  t1sn f, z              \n" \
-//  "    goto 0$              \n" \
-//  );
+/*
+// 4 cycles per loop, 2 cycles overhead
+#define _delay_loop_8(loop_ctr) \
+  __asm__( \
+  "  mov a, #("#loop_ctr")  \n" \
+  "0$:                      \n" \
+  "  sub a, #0x01           \n" \
+  "  t1sn f, z              \n" \
+  "    goto 0$              \n" \
+  );
+*/
 
 // 3 cycles per loop, 7 cycles overhead
 void _delay_loop_8(uint8_t loop_ctr) {
