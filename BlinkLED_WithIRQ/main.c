@@ -47,7 +47,7 @@ void main() {
   // Main processing loop
   while (1) {
     uint32_t currentMillis = millis();
-    if (currentMillis - previousMillis >= BLINK_INTERVAL) {
+    if (currentMillis - previousMillis > BLINK_INTERVAL) {
       toggleLed();
       previousMillis += BLINK_INTERVAL;
     }
