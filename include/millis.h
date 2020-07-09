@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#define US_PER_TICK      32
+
 volatile uint8_t _ticks;                        // Increments every 32 uS
 volatile uint32_t _millis;                      // Number of elapsed milliseconds (rolls over every 49.71 days)
 
@@ -23,7 +25,7 @@ uint32_t millis() {
 }
 
 void millis_irq_handler() {
-  if (_ticks++ == 31) {                         // This should really be 31.25, but close enough?
+  if (_ticks++ == (uint8_t)(1000/US_PER_TICK)) {  // 1000/32 is actually 31.25, so we are off a bit here (0.8%)
     _ticks = 0;
     _millis++;
   }
