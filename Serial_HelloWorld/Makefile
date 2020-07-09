@@ -57,7 +57,9 @@ $(OUTPUT).ihx: $(OBJECTS) $(BUILD_DIR)/lib.lib
 $(OUTPUT).bin: $(OUTPUT).ihx
 	makebin -p $(OUTPUT).ihx $(OUTPUT).bin
 
-size: $(OUTPUT).bin
+build: $(OUTPUT).bin
+
+size: build
 	@echo '---------- Segments ----------'
 	@egrep '(ABS,CON)|(REL,CON)' $(OUTPUT).map | gawk --non-decimal-data '{dec = sprintf("%d","0x" $$2); print dec " " $$0}' | /usr/bin/sort -n -k1 | cut -f2- -d' '
 	@echo '------------------------------'
