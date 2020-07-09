@@ -7,6 +7,7 @@ The source code for the `millis()` code can be found in the [millis.h](../includ
 
 There are certainly leaner ways of using a timer to blink an LED than the `millis()` technique.
 For example, eliminating or using smaller than the 32-bit variables, could reduce the code / RAM requirements potentially significantly.
+Simply using 16-bit instead of 32-bit variables reduces the code from 171 -> 122 words, and the ram requirements from 21 -> 7 bytes, although it means the millis counter will roll-over about every minute instead of every 49 days.
 
 See the [BlinkLED](../BlinkLED) example for a simpler timing loop based approach. 
 
