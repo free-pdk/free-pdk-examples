@@ -39,6 +39,10 @@ Edit the variables at top of the Makefile to:
 
 Note: All of these variables can be changed on the commandline as well.  i.e. `make DEVICE=PFS173 clean program run` 
 
+### Compatibility
+This example should run on every currently known Padauk microcontroller that is supported by SDCC and the Easy Pdk Programmer.
+A device specific include file (pdk/device/*.h) may need to be supplied for less common devices.
+
 ### Build Stats
 - Code Size: 87 words (174 bytes)
 - RAM usage: 7 bytes + stack
