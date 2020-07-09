@@ -20,7 +20,7 @@ Code Examples for Padauk MCUs using the free-pdk toolchain
 - SDCC Compiler: [SDCC](http://sdcc.sourceforge.net/) (3.9.0 or newer - 4.0.0+ preferred)
 - Easy PDK Programmer: [easy-pdk-programmer-software](https://github.com/free-pdk/easy-pdk-programmer-software) (v1.3 or newer. Currently in development branch)
 - PDK device includes: [pdk-includes](https://github.com/free-pdk/pdk-includes)
-  - Integrated as git Submodule
+  - Integrated as local copy
 - Easy PDK Programmer includes: [easy-pdk-includes](https://github.com/free-pdk/easy-pdk-includes)
-  - Integrated as git Submodule
+  - Integrated as local copy
 - Also requires 'make' and other common build tools
