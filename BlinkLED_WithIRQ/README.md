@@ -5,7 +5,8 @@ This example shows how to blink an LED without using a timing loop delay, allowi
 This example also shows one way to implement a `millis()` function (similar to what Arduino provides).
 The source code for the `millis()` code can be found in the [millis.h](../include/millis.h) include file.
 
-There are certainly leaner ways of using a timer to blink an LED if so desired.
+There are certainly leaner ways of using a timer to blink an LED than the `millis()` technique.
+For example, eliminating or using smaller than the 32-bit variables, could reduce the code / RAM requirements potentially significantly.
 
 See the [BlinkLED](../BlinkLED) example for a simpler timing loop based approach. 
 
@@ -53,4 +54,5 @@ A device specific include file (pdk/device/*.h) may need to be supplied for less
 ### Build Stats
 - Code Size: 171 words (342 bytes)
 - RAM usage: 21 bytes + stack
-  - Most of the 21 bytes are used by the `millis()` routines and variables defined in the [millis.h](../include/millis.h) include file.
+  - Most of the 21 bytes are used by the `millis()` routines and variables (defined in the [millis.h](../include/millis.h) include file),
+   as well as the millis related comparison/math found in `main()`.  Using smaller data types, or more efficient techniques, would help out if running into resource limits.
