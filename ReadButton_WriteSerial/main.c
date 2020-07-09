@@ -14,6 +14,7 @@
 // BTN is placed on Port A, Pin 5 (active low configuration)
 #define BTN_PIN             5
 
+// BTN is active low, so define helper for better readability below
 #define isButtonActive()    !(PA & (1 << BTN_PIN))
 
 uint8_t previousButtonState;
@@ -25,8 +26,9 @@ void interrupt(void) __interrupt(0) {
   }
 }
 
-// Main program.
+// Main program
 void main() {
+
   // Initialize hardware
   //PAC &= ~(1 << BTN_PIN);         // Set BTN_PIN as input (all pins are input by default)
   PADIER |= (1 << BTN_PIN);       // Enable BTN_PIN as digital input
@@ -37,7 +39,7 @@ void main() {
   INTRQ = 0;
   __engint();                     // Enable global interrupts
 
-  // Main processing loop.
+  // Main processing loop
   while (1) {
     uint8_t buttonState = isButtonActive();
       if (buttonState != previousButtonState) {

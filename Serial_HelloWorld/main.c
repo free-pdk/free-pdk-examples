@@ -18,15 +18,16 @@ void interrupt(void) __interrupt(0) {
   }
 }
 
-// Main program.
+// Main program
 void main() {
+
   // Initialize hardware
   serial_setup();                 // Initialize Serial engine
 
   INTRQ = 0;
   __engint();                     // Enable global interrupts
 
-  // Main processing loop.
+  // Main processing loop
   while (1) {
     serial_println("Hello World!");
     _delay_ms(1000);

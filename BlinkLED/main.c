@@ -12,16 +12,18 @@
 // LED is placed on Port A, Pin 4 (current sink configuration)
 #define LED_PIN             4
 
+// LED is active low (current sink), so define helpers for better readability below
 #define turnLedOn()         PA &= ~(1 << LED_PIN)
 #define turnLedOff()        PA |= (1 << LED_PIN)
 
-// Main program.
+// Main program
 void main() {
+
   // Initialize hardware
   PAC |= (1 << LED_PIN);          // Set LED_PIN as output (all pins are input by default)
   turnLedOff();
 
-  // Main processing loop.
+  // Main processing loop
   while (1) {
     turnLedOn();
     _delay_ms(1000);
@@ -30,7 +32,7 @@ void main() {
   }
 }
 
-// Startup code - Setup/calibrate system clock.
+// Startup code - Setup/calibrate system clock
 unsigned char _sdcc_external_startup(void) {
 
   // Initialize the system clock (CLKMD register) with the IHRC, ILRC, or EOSC clock source and correct divider.
