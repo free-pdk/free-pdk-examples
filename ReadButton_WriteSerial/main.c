@@ -42,7 +42,7 @@ void main() {
   // Main processing loop
   while (1) {
     uint8_t buttonState = isButtonActive();
-      if (buttonState != previousButtonState) {
+    if (buttonState != previousButtonState) {
       if (buttonState) {
         serial_println("Button Down");
       } else {
@@ -54,7 +54,7 @@ void main() {
   }
 }
 
-// Startup code - Setup/calibrate system clock.
+// Startup code - Setup/calibrate system clock
 unsigned char _sdcc_external_startup(void) {
 
   // Initialize the system clock (CLKMD register) with the IHRC, ILRC, or EOSC clock source and correct divider.

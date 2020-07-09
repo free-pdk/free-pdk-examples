@@ -34,7 +34,7 @@ void main() {
   }
 }
 
-// Startup code - Setup/calibrate system clock.
+// Startup code - Setup/calibrate system clock
 unsigned char _sdcc_external_startup(void) {
 
   // Initialize the system clock (CLKMD register) with the IHRC, ILRC, or EOSC clock source and correct divider.
