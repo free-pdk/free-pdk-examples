@@ -41,8 +41,8 @@ void main() {
 #elif defined(PWM_11_FULL)
   PWMG1DTL = 0x00;                // Clear the LED PWM duty value
   PWMG1DTH = 0x00;
-  PWMG1CUBL = 0xFF;               // Setup PWM upper bound
-  PWMG1CUBH = 0x00;
+  PWMG1CUBL = 0x00;               // Setup PWM upper bound
+  PWMG1CUBH = 0xFF;
   PWMG1C = (uint8_t)(PWMG1C_ENABLE | PWMG1C_INVERT_OUT | PWMG1C_OUT_PA4 | PWMG1C_CLK_IHRC);
   PWMG1S = 0x00;                  // No pre-scaler
 #else
