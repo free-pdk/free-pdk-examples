@@ -1,12 +1,12 @@
 
+DEVICE = PFS154
 F_CPU = 8000000
 TARGET_VDD_MV = 4000
 TARGET_VDD = 4.0
 
 # ---------------------------------------------------------------------
 
-DEVICE ?= PFS154
-OUTPUT_NAME ?= Serial_HelloWorld_$(DEVICE)
+OUTPUT_NAME = Serial_HelloWorld_$(DEVICE)
 
 ifeq ($(DEVICE), PMS152)
 	ARCH = pdk14

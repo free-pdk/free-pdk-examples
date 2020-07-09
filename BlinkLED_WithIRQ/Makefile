@@ -1,12 +1,12 @@
 
+DEVICE = PFS154
 F_CPU = 1000000
 TARGET_VDD_MV = 4000
 TARGET_VDD = 4.0
 
 # ---------------------------------------------------------------------
 
-DEVICE ?= PFS154
-OUTPUT_NAME ?= BlinkLED_WithIRQ_$(DEVICE)
+OUTPUT_NAME = BlinkLED_WithIRQ_$(DEVICE)
 
 ifeq ($(DEVICE), PMS152)
 	ARCH = pdk14
