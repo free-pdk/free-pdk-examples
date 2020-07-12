@@ -19,8 +19,8 @@ This means the negative leg (or cathode) of the LED is connected to the digital 
 ### Toolchain:
 - Compiler: Requires [SDCC 3.9.0](http://sdcc.sourceforge.net/) (or newer, 4.0.0+ is recommended)
 - Programmer: Requires [Easy Pdk Programmer Hardware](https://github.com/free-pdk/easy-pdk-programmer-hardware) with [Easy Pdk Programmer Software](https://github.com/free-pdk/easy-pdk-programmer-software)
-  - **Important!** - In order for the clock calibration routines to function properly, the Easy Pdk Programmer needs to be using both the firmware and easypdkprog software found in the [development](https://github.com/free-pdk/easy-pdk-programmer-software/tree/development) branch.
-**Both of these need to be re-compiled, and the firmware needs to be re-programmed using dfu-util.**
+  - **Important!** - In order for the clock calibration routines to function properly, the Easy Pdk Programmer needs to be using re-compiled Firmware and easypdkprog software from the [development](https://github.com/free-pdk/easy-pdk-programmer-software/tree/development) branch.
+**Both of these need to be re-compiled, and the Firmware needs to be re-programmed using dfu-util.**
 Eventually, there will be a new release of easy-pdk-programmer-software (v1.3?) that will make this easier.
 - Also requires 'make' and other common build tools
 
