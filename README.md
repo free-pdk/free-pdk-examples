@@ -19,9 +19,9 @@ Code Examples for Padauk MCUs using the free-pdk toolchain
 ### Toolchain:
 - SDCC Compiler: [SDCC](http://sdcc.sourceforge.net/) (3.9.0 or newer - 4.0.0+ preferred)
 - Easy PDK Programmer: [easy-pdk-programmer-software](https://github.com/free-pdk/easy-pdk-programmer-software)
-  - **Important!** - In order for the clock calibration routines to function properly, the Easy Pdk Programmer needs to be using re-compiled Firmware and easypdkprog software from the [development](https://github.com/free-pdk/easy-pdk-programmer-software/tree/development) branch.
-**Both of these need to be re-compiled, and the Firmware needs to be re-programmed using dfu-util.**
-Eventually, there will be a new release of easy-pdk-programmer-software (v1.3?) that will make this easier.
+  > **Important!** - In order for the clock calibration routines to function properly, the Easy PDK Programmer needs to be using re-compiled Firmware and easypdkprog software from the [development](https://github.com/free-pdk/easy-pdk-programmer-software/tree/development) branch.
+  > **Both of these need to be re-compiled, and the Firmware needs to be re-programmed using dfu-util.**
+  > Eventually, there will be a new release of easy-pdk-programmer-software (v1.3?) that will make this easier.
 - PDK device includes: [pdk-includes](https://github.com/free-pdk/pdk-includes)
   - Integrated as local copy
 - Easy PDK Programmer includes: [easy-pdk-includes](https://github.com/free-pdk/easy-pdk-includes)
