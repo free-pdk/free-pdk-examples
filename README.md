@@ -3,6 +3,8 @@ Code Examples for Padauk MCUs using the free-pdk toolchain
 
 ### Warning: This is a work in progress and may change significantly before being considered stable.  Use at your own risk.
 
+> _**Inspiration**: These examples were inspired by the [Arduino Built-In Examples](https://www.arduino.cc/en/Tutorial/BuiltInExamples) that have been placed into the public domain._
+
 ### Code Examples:
 - [**BlinkLED**](BlinkLED) - Turns an LED on for one second, then off for one second, repeatedly.  Uses a timing loop for delays.
 - [**BlinkLED_WithIRQ**](BlinkLED_WithIRQ) - Turns an LED on for one second, then off for one second, repeatedly.  Uses a timer interrupt for delays.
