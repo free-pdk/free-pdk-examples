@@ -8,28 +8,28 @@
 #include "auto_sysclock.h"
 #include "delay.h"
 
-// BTN is placed on Port A, Pin 5 (active low configuration)
-#define BTN_PIN             5
+// BTN is placed on the PA5 pin (Port A, Bit 5) with an active low configuration
+#define BTN_BIT             5
 
 // BTN is active low, so define helper for better readability below
-#define isButtonActive()    !(PA & (1 << BTN_PIN))
+#define isButtonActive()    !(PA & (1 << BTN_BIT))
 
-// LED is placed on Port A, Pin 4 (current sink configuration)
-#define LED_PIN             4
+// LED is placed on the PA4 pin (Port A, Bit 4) with a current sink configuration
+#define LED_BIT             4
 
 // LED is active low (current sink), so define helpers for better readability below
-#define turnLedOn()         PA &= ~(1 << LED_PIN)
-#define turnLedOff()        PA |= (1 << LED_PIN)
+#define turnLedOn()         PA &= ~(1 << LED_BIT)
+#define turnLedOff()        PA |= (1 << LED_BIT)
 
 // Main program
 void main() {
 
   // Initialize hardware
-  //PAC &= ~(1 << BTN_PIN);         // Set BTN_PIN as input (all pins are input by default)
-  PADIER |= (1 << BTN_PIN);       // Enable BTN_PIN as digital input
-  PAPH |= (1 << BTN_PIN);         // Enable pull-up resistor on BTN_PIN
+  //PAC &= ~(1 << BTN_BIT);         // Set Button as input (all pins are input by default)
+  PADIER |= (1 << BTN_BIT);       // Enable Button as digital input
+  PAPH |= (1 << BTN_BIT);         // Enable pull-up resistor on Button
 
-  PAC |= (1 << LED_PIN);          // Set LED_PIN as output (all pins are input by default)
+  PAC |= (1 << LED_BIT);          // Set LED as output (all pins are input by default)
   turnLedOff();
 
   // Main processing loop

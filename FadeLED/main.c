@@ -18,18 +18,18 @@
   #define PWM_8
 #endif
 
-// Define which Pin the LED is on (current sink configuration)
+// Define which pin the LED is on (current sink configuration)
 #if defined(PWM_8)
-  #define LED_PIN             3   // LED is placed on Port A, Pin 3, which is also TM2PWM
+  #define LED_BIT             3   // LED is placed on the PA3 pin (Port A, Bit 3), which is also TM2PWM
 #else
-  #define LED_PIN             4   // LED is placed on Port A, Pin 4, which is also PG1PWM
+  #define LED_BIT             4   // LED is placed on the PA4 pin (Port A, Bit 4), which is also PG1PWM
 #endif
 
 // Main program
 void main() {
 
   // Initialize hardware
-  PAC |= (1 << LED_PIN);          // Set LED_PIN as output (all pins are input by default)
+  PAC |= (1 << LED_BIT);          // Set LED as output (all pins are input by default)
 
 #if defined(PWM_8)
   TM2B = 0x00;                    // Clear the LED PWM duty value

@@ -9,18 +9,18 @@
 #include "auto_sysclock.h"
 #include "delay.h"
 
-// LED is placed on Port A, Pin 4 (current sink configuration)
-#define LED_PIN             4
+// LED is placed on the PA4 pin (Port A, Bit 4) with a current sink configuration
+#define LED_BIT             4
 
 // LED is active low (current sink), so define helpers for better readability below
-#define turnLedOn()         PA &= ~(1 << LED_PIN)
-#define turnLedOff()        PA |= (1 << LED_PIN)
+#define turnLedOn()         PA &= ~(1 << LED_BIT)
+#define turnLedOff()        PA |= (1 << LED_BIT)
 
 // Main program
 void main() {
 
   // Initialize hardware
-  PAC |= (1 << LED_PIN);          // Set LED_PIN as output (all pins are input by default)
+  PAC |= (1 << LED_BIT);          // Set LED as output (all pins are input by default)
   turnLedOff();
 
   // Main processing loop
