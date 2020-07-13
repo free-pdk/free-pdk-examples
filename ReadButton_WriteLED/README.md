@@ -8,7 +8,7 @@ This example demonstrates how to read the state of a Button connected to a digit
 
 **Button**:
 
-By default, the Button is placed on Port A Bit 5 (PA5)* with an active low configuration.  The pin's internal pull-up resistor is utilized to avoid the need for an external resistor.
+By default, the Button is placed on the PA5* pin (Port A, Bit 5) with an active low configuration.  The pin's internal pull-up resistor is utilized to avoid the need for an external resistor.
 >_*Note: Please consult the pinout for the specific microcontroller package used to identify the correct physical pin._
 
 This means that one side of the button is connected to the digital pin of the IC, and the other side is connected to GND.
@@ -20,7 +20,7 @@ To properly test this example, disconnect the programmer and use an external pow
 
 **LED**:
 
-By default, the LED is placed on Port A Bit 4 (PA4)* with a current sink configuration.
+By default, the LED is placed on PA4* pin (Port A, Bit 4)* with a current sink configuration.
 >_*Note: Please consult the pinout for the specific microcontroller package used to identify the correct physical pin._
 
 This means the negative leg (or cathode) of the LED is connected to the digital pin of the IC, and the positive leg (or anode) of the LED is connected through a current limiting resistor to VDD.
@@ -49,7 +49,7 @@ make run
 ### Customization:
 Edit the variables at the top of the Makefile to:
 - **DEVICE**: Use a different Padauk MCU (defaults to PFS154)
-- **F_CPU**: Use a different frequency for the system clock (defaults to 1MHz = IHRC/16)
+- **F_CPU**: Use a different frequency for the system clock (defaults to 1MHz, i.e. IHRC/16)
   > Note: The `AUTO_INIT_SYSCLOCK()` macro in the `_sdcc_external_startup()` method will automatically choose the correct internal oscillator (IHRC or ILRC) and clock divider based on the desired frequency.
   > The `AUTO_CALIBRATE_SYSCLOCK(vdd)` macro will install a placeholder for the correct internal oscillator (IHRC or ILRC) that the Easy PDK Programmer will use to calibrate to the desired frequency.
 - **TARGET_VDD_MV**: Use a different voltage while calibrating the internal oscillator (IHRC or ILRC) (defaults to 4000mV)
