@@ -9,7 +9,7 @@
 #include "serial.h"
 #include "delay.h"
 
-// Note: serial.h assumes TX is on Port A, Pin 7, and uses timer2 (TM2) interrupts for timing.
+// Note: serial.h assumes TX is on the PA7 pin (Port A, Bit 7), and uses timer2 (TM2) interrupts for timing.
 
 void interrupt(void) __interrupt(0) {
   if (INTRQ & INTRQ_TM2) {        // TM2 interrupt request?

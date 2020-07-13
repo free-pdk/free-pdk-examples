@@ -9,13 +9,13 @@
 #include "serial.h"
 #include "delay.h"
 
-// Note: serial.h assumes TX is on Port A, Pin 7, and uses timer2 (TM2) interrupts for timing.
+// Note: serial.h assumes TX is on the PA7 pin (Port A, Bit 7), and uses timer2 (TM2) interrupts for timing.
 
-// BTN is placed on Port A, Pin 5 (active low configuration)
-#define BTN_PIN             5
+// BTN is placed on the PA4 pin (Port A, Bit 5) with an active low configuration
+#define BTN_BIT             5
 
 // BTN is active low, so define helper for better readability below
-#define isButtonActive()    !(PA & (1 << BTN_PIN))
+#define isButtonActive()    !(PA & (1 << BTN_BIT))
 
 uint8_t previousButtonState;
 
@@ -30,9 +30,9 @@ void interrupt(void) __interrupt(0) {
 void main() {
 
   // Initialize hardware
-  //PAC &= ~(1 << BTN_PIN);         // Set BTN_PIN as input (all pins are input by default)
-  PADIER |= (1 << BTN_PIN);       // Enable BTN_PIN as digital input
-  PAPH |= (1 << BTN_PIN);         // Enable pull-up resistor on BTN_PIN
+  //PAC &= ~(1 << BTN_BIT);         // Set Button as input (all pins are input by default)
+  PADIER |= (1 << BTN_BIT);       // Enable Button as digital input
+  PAPH |= (1 << BTN_BIT);         // Enable pull-up resistor on Button
 
   serial_setup();                 // Initialize Serial engine
 
