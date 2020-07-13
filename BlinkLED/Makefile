@@ -8,13 +8,7 @@ TARGET_VDD = 4.0
 
 OUTPUT_NAME = BlinkLED_$(DEVICE)
 
-ifeq ($(DEVICE), PMS152)
-	ARCH = pdk14
-else ifeq ($(DEVICE), PFS154)
-	ARCH = pdk14
-else ifeq ($(DEVICE), PFS173)
-	ARCH = pdk15
-endif
+include ../arch-from-device.mk
 
 ROOT_DIR = ..
 BUILD_DIR = .build
