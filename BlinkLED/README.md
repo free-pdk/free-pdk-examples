@@ -1,27 +1,27 @@
 # BlinkLED Example
 
-This example shows just about the simplest thing you can do: it blinks an LED, on for one second, then off for one second, repeatedly.
+This example demonstrates just about the simplest thing you can do: it blinks an LED, on for one second, then off for one second, repeatedly.
 
 Note: This example uses a timing loop to delay for one second.
 See the [BlinkLED_WithIRQ](../BlinkLED_WithIRQ) example for a timer based approach. 
 
-_**Inspiration**: This example was inspired by the public domain [Blink](https://www.arduino.cc/en/Tutorial/Blink) example from Arduino._
+> _**Inspiration**: This example was inspired by the public domain [Blink](https://www.arduino.cc/en/Tutorial/Blink) example from Arduino._
 
 ### Hardware Circuit
-By default, the LED is placed on Port A Bit 4 (PA4) in a current sink configuration.
-
-Please consult the pinout of the specific microcontroller package used to identify the correct physical pin.
+By default, the LED is placed on the PA4 pin* (Port A, Bit 4) with a current sink configuration.
 
 This means the negative leg (or cathode) of the LED is connected to the digital pin of the IC, and the positive leg (or anode) of the LED is connected through a current limiting resistor to VDD.
 - When the digital pin is LOW, current will flow through the LED and it will light up.
 - When the digital pin is HIGH, no current will flow and the LED will turn off.
 
+>_*Note: Please consult the pinout for the specific microcontroller package used to identify the correct physical pin._
+
 ### Toolchain:
 - Compiler: Requires [SDCC 3.9.0](http://sdcc.sourceforge.net/) (or newer, 4.0.0+ is recommended)
-- Programmer: Requires [Easy Pdk Programmer Hardware](https://github.com/free-pdk/easy-pdk-programmer-hardware) with [Easy Pdk Programmer Software](https://github.com/free-pdk/easy-pdk-programmer-software)
-  - **Important!** - In order for the clock calibration routines to function properly, the Easy Pdk Programmer needs to be using re-compiled Firmware and easypdkprog software from the [development](https://github.com/free-pdk/easy-pdk-programmer-software/tree/development) branch.
-**Both of these need to be re-compiled, and the Firmware needs to be re-programmed using dfu-util.**
-Eventually, there will be a new release of easy-pdk-programmer-software (v1.3?) that will make this easier.
+- Programmer: Requires [Easy PDK Programmer Hardware](https://github.com/free-pdk/easy-pdk-programmer-hardware) with [Easy PDK Programmer Software](https://github.com/free-pdk/easy-pdk-programmer-software)
+  > **Important!** - In order for the clock calibration routines to function properly, the Easy PDK Programmer needs to be using re-compiled Firmware and easypdkprog software from the [development](https://github.com/free-pdk/easy-pdk-programmer-software/tree/development) branch.
+  > **Both of these need to be re-compiled, and the Firmware needs to be re-programmed using dfu-util.**
+  > Eventually, there will be a new release of easy-pdk-programmer-software (v1.3?) that will make this easier.
 - Also requires 'make' and other common build tools
 
 ### Build Commands:
@@ -32,21 +32,22 @@ make size (also calls build)
 make program (also calls size which calls build)
 make run
 ```
-Note: These commands can be chained as well.  i.e. `make clean program run`
+> Note: These commands can be chained as well.  i.e. `make clean program run`
 
 
 ### Customization:
 Edit the variables at the top of the Makefile to:
-- **DEVICE**: Use a different Padauk MCU (defaults to PFS154 if not changed)
-- **F_CPU**: Use a different frequency for the system clock
-  - Note: The _sdcc_external_startup() method will automatically choose the correct internal oscillator (IHRC or ILRC) and divider based on the desired frequency.
-- **TARGET_VDD_MV**: Use a different voltage for internal oscillator (IHRC or ILRC) calibration
-- **TARGET_VDD**: Use a different voltage while the IC is operating
+- **DEVICE**: Use a different Padauk MCU (defaults to PFS154)
+- **F_CPU**: Use a different frequency for the system clock (defaults to 1MHz, i.e. IHRC/16)
+  > Note: The `AUTO_INIT_SYSCLOCK()` macro in the `_sdcc_external_startup()` method will automatically choose the correct internal oscillator (IHRC or ILRC) and clock divider based on the desired frequency.
+  > The `AUTO_CALIBRATE_SYSCLOCK(vdd)` macro will install a placeholder for the correct internal oscillator (IHRC or ILRC) that the Easy PDK Programmer will use to calibrate to the desired frequency.
+- **TARGET_VDD_MV**: Use a different voltage while calibrating the internal oscillator (IHRC or ILRC) (defaults to 4000mV)
+- **TARGET_VDD**: Use a different voltage while the IC is operating (defaults to 4.0V)
 
-Note: All of these variables can be changed on the commandline as well.  i.e. `make DEVICE=PFS173 clean program run` 
+> Note: All of these variables can be changed on the commandline as well.  i.e. `make DEVICE=PFS173 clean program run` 
 
 ### Compatibility
-This example should run on every currently known Padauk microcontroller that is supported by SDCC and the Easy Pdk Programmer.
+This example should run on every currently known Padauk microcontroller that is supported by SDCC and the Easy PDK Programmer.
 A device specific include file (pdk/device/*.h) may need to be supplied for less common devices.
 
 ### Build Stats

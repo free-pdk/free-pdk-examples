@@ -8,8 +8,7 @@ This example demonstrates how to read the state of a Button connected to a digit
 
 **Button**:
 
-By default, the Button is placed on the PA5* pin (Port A, Bit 5) with an active low configuration.  The pin's internal pull-up resistor is utilized to avoid the need for an external resistor.
->_*Note: Please consult the pinout for the specific microcontroller package used to identify the correct physical pin._
+By default, the Button is placed on the PA5 pin* (Port A, Bit 5) with an active low configuration.  The pin's internal pull-up resistor is utilized to avoid the need for an external resistor.
 
 This means that one side of the button is connected to the digital pin of the IC, and the other side is connected to GND.
 - When the Button is idle, the internal pull-up resistor pulls the digital input towards VDD, and the pin is read as HIGH (1).
@@ -18,21 +17,24 @@ This means that one side of the button is connected to the digital pin of the IC
 > _Note: The Easy PDK Programmer is not able to properly release the PA5 pin, so while the programmer is connected the pin will always be read as LOW.
 To properly test this example, disconnect the programmer and use an external power source (or move the button to a different pin)._
 
+>_*Note: Please consult the pinout for the specific microcontroller package used to identify the correct physical pin._
+
 **LED**:
 
-By default, the LED is placed on PA4* pin (Port A, Bit 4)* with a current sink configuration.
->_*Note: Please consult the pinout for the specific microcontroller package used to identify the correct physical pin._
+By default, the LED is placed on the PA4 pin* (Port A, Bit 4) with a current sink configuration.
 
 This means the negative leg (or cathode) of the LED is connected to the digital pin of the IC, and the positive leg (or anode) of the LED is connected through a current limiting resistor to VDD.
 - When the digital pin is LOW, current will flow through the LED and it will light up.
 - When the digital pin is HIGH, no current will flow and the LED will turn off.
 
+>_*Note: Please consult the pinout for the specific microcontroller package used to identify the correct physical pin._
+
 ### Toolchain:
 - Compiler: Requires [SDCC 3.9.0](http://sdcc.sourceforge.net/) (or newer, 4.0.0+ is recommended)
 - Programmer: Requires [Easy PDK Programmer Hardware](https://github.com/free-pdk/easy-pdk-programmer-hardware) with [Easy PDK Programmer Software](https://github.com/free-pdk/easy-pdk-programmer-software)
   > **Important!** - In order for the clock calibration routines to function properly, the Easy PDK Programmer needs to be using re-compiled Firmware and easypdkprog software from the [development](https://github.com/free-pdk/easy-pdk-programmer-software/tree/development) branch.
-**Both of these need to be re-compiled, and the Firmware needs to be re-programmed using dfu-util.**
-Eventually, there will be a new release of easy-pdk-programmer-software (v1.3?) that will make this easier.
+  > **Both of these need to be re-compiled, and the Firmware needs to be re-programmed using dfu-util.**
+  > Eventually, there will be a new release of easy-pdk-programmer-software (v1.3?) that will make this easier.
 - Also requires 'make' and other common build tools
 
 ### Build Commands:
