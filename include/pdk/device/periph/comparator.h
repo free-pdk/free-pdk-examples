@@ -66,6 +66,7 @@ __sfr __at(GPCS_ADDR)         _gpcs;
 
 #define GPCC_COMP_RESULT_NEGATIV     0x00
 #define GPCC_COMP_RESULT_POSITIV     (1 << GPCC_COMP_RESULT_BIT)
+
 #define GPCC_COMP_ENABLE             (1 << GPCC_COMP_ENABLE_BIT)
 
 // GPCS (Comparator Selection) register definitions

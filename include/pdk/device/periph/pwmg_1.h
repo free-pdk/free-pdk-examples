@@ -68,7 +68,7 @@ __sfr __at(PWMG1CUBL_ADDR)    _pwmg1cubl;
 #define PWMG1C_ENABLE                (1 << PWMG1C_ENABLE_BIT)
 
 // PWMG1S (PWMG1 Scalar) register definitions
-#define PWMG1S_CLK_DIV_BIT0          0
+#define PWMG1S_SCALE_BIT0            0
 #define PWMG1S_PRESCALE_BIT0         5
 #define PWMG1S_INT_MODE_BIT          7
 
