@@ -16,15 +16,11 @@ OUTPUT_DIR = .output
 
 OUTPUT = $(OUTPUT_DIR)/$(OUTPUT_NAME)
 
-LIB_SOURCES = $(wildcard $(ROOT_DIR)/lib/*.c) $(wildcard $(ROOT_DIR)/lib/**/*.c)
-LIB_OBJECTS = $(patsubst $(ROOT_DIR)/lib/%.c,$(BUILD_DIR)/lib/%.rel,$(LIB_SOURCES))
-
 SOURCES = main.c
 OBJECTS = $(patsubst %.c,$(BUILD_DIR)/%.rel,$(SOURCES))
 
 # http://sdcc.sourceforge.net/doc/sdccman.pdf
 COMPILE = sdcc -m$(ARCH) -c --std-sdcc11 --opt-code-size -D$(DEVICE) -DF_CPU=$(F_CPU) -DTARGET_VDD_MV=$(TARGET_VDD_MV) -I. -I$(ROOT_DIR)/include
-BUILD_LIB = sdar -rc
 LINK = sdcc -m$(ARCH)
 EASYPDKPROG = easypdkprog
 
@@ -37,16 +33,9 @@ $(BUILD_DIR)/%.rel: %.c
 	@mkdir -p $(dir $@)
 	$(COMPILE) -o $@ $<
 
-$(BUILD_DIR)/lib/%.rel: $(ROOT_DIR)/lib/%.c
-	@mkdir -p $(dir $@)
-	$(COMPILE) -o $@ $<
-
-$(BUILD_DIR)/lib.lib: $(LIB_OBJECTS)
-	$(BUILD_LIB) $@ $(LIB_OBJECTS)
-
-$(OUTPUT).ihx: $(OBJECTS) $(BUILD_DIR)/lib.lib
+$(OUTPUT).ihx: $(OBJECTS)
 	@mkdir -p $(dir $(OUTPUT))
-	$(LINK) --out-fmt-ihx -o $(OUTPUT).ihx $(OBJECTS) $(BUILD_DIR)/lib.lib
+	$(LINK) --out-fmt-ihx -o $(OUTPUT).ihx $(OBJECTS)
 
 $(OUTPUT).bin: $(OUTPUT).ihx
 	makebin -p $(OUTPUT).ihx $(OUTPUT).bin
