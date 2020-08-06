@@ -20,23 +20,15 @@
 #define LOOP_CTR_16(cycles)     LOOP_CTR(cycles,9,8)
 #define LOOP_CTR_32(cycles)     LOOP_CTR(cycles,13,12)
 
-#define _delay_us_small(us)     _delay_loop_8(LOOP_CTR_8(US_TO_CYCLES(us)))
-#define _delay_us(us)           _delay_loop_16(LOOP_CTR_16(US_TO_CYCLES(us)))
+#define _delay_us(us)           \
+	(LOOP_CTR_8(US_TO_CYCLES(us)) < 256L) ? \
+	_delay_loop_8((uint8_t)LOOP_CTR_8(US_TO_CYCLES(us))) : \
+	_delay_loop_16((uint16_t)LOOP_CTR_16(US_TO_CYCLES(us)))
 
-#define _delay_ms_small(ms)     _delay_loop_16(LOOP_CTR_16(MS_TO_CYCLES(ms)))
-#define _delay_ms(ms)           _delay_loop_32(LOOP_CTR_32(MS_TO_CYCLES(ms)))
-
-/*
-// 4 cycles per loop, 2 cycles overhead
-#define _delay_loop_8(loop_ctr) \
-  __asm__( \
-  "  mov a, #("#loop_ctr")  \n" \
-  "0$:                      \n" \
-  "  sub a, #0x01           \n" \
-  "  t1sn f, z              \n" \
-  "    goto 0$              \n" \
-  );
-*/
+#define _delay_ms(ms)           \
+	(LOOP_CTR_16(MS_TO_CYCLES(ms)) < 65536L) ? \
+	_delay_loop_16((uint16_t)LOOP_CTR_16(MS_TO_CYCLES(ms))) : \
+	_delay_loop_32((uint32_t)LOOP_CTR_32(MS_TO_CYCLES(ms)))
 
 // 3 cycles per loop, 7 cycles overhead
 void _delay_loop_8(uint8_t loop_ctr) {
