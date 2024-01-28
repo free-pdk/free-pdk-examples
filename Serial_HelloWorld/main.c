@@ -6,6 +6,7 @@
 
 #include <pdk/device.h>
 #include "auto_sysclock.h"
+#include "startup.h"
 #include "serial.h"
 #include "delay.h"
 
@@ -35,7 +36,7 @@ void main() {
 }
 
 // Startup code - Setup/calibrate system clock
-unsigned char _sdcc_external_startup(void) {
+unsigned char STARTUP_FUNCTION(void) {
 
   // Initialize the system clock (CLKMD register) with the IHRC, ILRC, or EOSC clock source and correct divider.
   // The AUTO_INIT_SYSCLOCK() macro uses F_CPU (defined in the Makefile) to choose the IHRC or ILRC clock source and divider.

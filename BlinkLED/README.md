@@ -42,7 +42,7 @@ make run
 Edit the variables at the top of the Makefile to:
 - **DEVICE**: Use a different Padauk MCU (defaults to PFS154)
 - **F_CPU**: Use a different frequency for the system clock (defaults to 1MHz, i.e. IHRC/16)
-  > Note: The `AUTO_INIT_SYSCLOCK()` macro in the `_sdcc_external_startup()` method will automatically choose the correct internal oscillator (IHRC or ILRC) and clock divider based on the desired frequency.
+  > Note: The `AUTO_INIT_SYSCLOCK()` macro in the `STARTUP_FUNCTION()` method will automatically choose the correct internal oscillator (IHRC or ILRC) and clock divider based on the desired frequency.
   > The `AUTO_CALIBRATE_SYSCLOCK(vdd)` macro will install a placeholder for the correct internal oscillator (IHRC or ILRC) that the Easy PDK Programmer will use to calibrate to the desired frequency.
 - **TARGET_VDD_MV**: Use a different voltage while calibrating the internal oscillator (IHRC or ILRC) (defaults to 4000mV)
 - **TARGET_VDD**: Use a different voltage while the IC is operating (defaults to 4.0V)
