@@ -43,7 +43,8 @@ void main(void) {
   setup();
 
   // Main processing loop
-  while (1) {
+  while (1) 
+  {
     for (int i = 0; i < 3; i++) {
       turnLedOn();
       _delay_ms(400);
@@ -51,7 +52,7 @@ void main(void) {
       _delay_ms(400);
     }
 
-    sleep();
+    //sleep();
   }
 }
 

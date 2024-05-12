@@ -59,7 +59,7 @@ __asm
   subc  __delay_loop_16_PARM_1+1          ;   1 cycle
   mov   a, __delay_loop_16_PARM_1+0       ;   1 cycle
   or    a, __delay_loop_16_PARM_1+1       ;   1 cycle
-  t1sn  f, z                              ;   1 cycle + 1 cycle for final skip
+  t1sn.io  f, z                              ;   1 cycle + 1 cycle for final skip
     goto 00001$                           ;   2 cycles
   // ret                                  ; 2 cycles
 __endasm;
@@ -88,7 +88,7 @@ __asm
   or    a, __delay_loop_32_PARM_1+1       ;   1 cycle
   or    a, __delay_loop_32_PARM_1+2       ;   1 cycle
   or    a, __delay_loop_32_PARM_1+3       ;   1 cycle
-  t1sn  f, z                              ;   1 cycle + 1 cycle for final skip
+  t1sn.io  f, z                              ;   1 cycle + 1 cycle for final skip
     goto 00001$                           ;   2 cycles
   // ret                                  ; 2 cycles
 __endasm;
