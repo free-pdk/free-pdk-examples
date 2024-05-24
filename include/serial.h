@@ -9,7 +9,7 @@
 
 volatile uint16_t txdata;                       // Serial data shift register
 
-void serial_setup() {
+void serial_setup(void) {
   // Setup timer2 (TM2) interrupt for 115200 baud
   TM2C = TM2C_CLK_IHRC;                         // Use IHRC -> 16 Mhz
   TM2S = TM2S_PRESCALE_NONE | TM2S_SCALE_DIV2;  // No prescale, scale 2 ~> 8MHz
@@ -20,7 +20,7 @@ void serial_setup() {
   INTEN |= INTEN_TM2;                           // Enable TM2 interrupt, send out initial stop bits and autobaud char
 }
 
-void serial_irq_handler() {
+void serial_irq_handler(void) {
   if (txdata) {                                 // Does txdata contains bits to send?
     if (txdata & 0x01)                          // Check bit (1/0) for sending
       __set1(PA, SERIAL_TX_PIN);                // Send 1 on TX Pin

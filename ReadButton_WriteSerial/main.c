@@ -28,7 +28,7 @@ void interrupt(void) __interrupt(0) {
 }
 
 // Main program
-void main() {
+void main(void) {
 
   // Initialize hardware
   //PAC &= ~(1 << BTN_BIT);         // Set Button as input (all pins are input by default)

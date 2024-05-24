@@ -20,7 +20,7 @@ void interrupt(void) __interrupt(0) {
 }
 
 // Main program
-void main() {
+void main(void) {
 
   // Initialize hardware
   serial_setup();                 // Initialize Serial engine
