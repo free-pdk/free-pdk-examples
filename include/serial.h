@@ -23,9 +23,9 @@ void serial_setup(void) {
 void serial_irq_handler(void) {
   if (txdata) {                                 // Does txdata contains bits to send?
     if (txdata & 0x01)                          // Check bit (1/0) for sending
-      __set1(PA, SERIAL_TX_PIN);                // Send 1 on TX Pin
+      PA |= (1 << SERIAL_TX_PIN);               // Send 1 on TX Pin
     else
-      __set0(PA, SERIAL_TX_PIN);                // Send 0 on TX Pin
+      PA &= ~(1 << SERIAL_TX_PIN);               // Send 1 on TX Pin
     txdata >>= 1;                               // Shift txdata
   }
 }

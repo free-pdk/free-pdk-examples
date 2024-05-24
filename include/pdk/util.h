@@ -41,8 +41,6 @@
 #define __stopexe()           __asm__("stopexe\nnop\n")
 #define __reset()             __asm__("reset\n")
 #define __wdreset()           __asm__("wdreset\n")
-#define __set0(var,bit)       __asm__("set0.io "_STR_VAR(var)", #"_STR(bit)"\n")
-#define __set1(var,bit)       __asm__("set1.io "_STR_VAR(var)", #"_STR(bit)"\n")
 
 // BIT definitions
 #define BIT0	               (1)
